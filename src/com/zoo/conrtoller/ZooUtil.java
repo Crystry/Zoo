@@ -1,4 +1,4 @@
-package com.zoo.model;
+package com.zoo.conrtoller;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
