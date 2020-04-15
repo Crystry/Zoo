@@ -1,41 +1,69 @@
 package com.zoo.model;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 public class User {
-    private Integer Id;
-    private String Name;
-    private Integer Password;
-    private String Attribute;
 
-    public String getAttribute() {
-        return Attribute;
-    }
+    private String Password;
 
-    public Integer getId() {
+
+    private SimpleIntegerProperty Id=new SimpleIntegerProperty(this,"Id");
+    private SimpleStringProperty Name=new SimpleStringProperty(this,"Name");
+    private SimpleStringProperty Attribute=new SimpleStringProperty(this,"Attribute");
+
+
+
+    public SimpleIntegerProperty IdProperty(){
         return Id;
+    }
+    public Integer getId() {
+        //return Id;
+        return IdProperty().get();
     }
 
     public void setId(Integer id) {
-        Id = id;
+        IdProperty().set(id);
     }
 
-    public void setAttribute(String attribute) {
-        Attribute = attribute;
-    }
-
-    public String getName() {
+    public SimpleStringProperty NameProperty(){
         return Name;
+    }
+    public String getName() {
+        return NameProperty().get();
     }
 
     public void setName(String name) {
-        Name = name;
+        NameProperty().set(name);
     }
 
-    public Integer getPassword() {
+    public String getPassword() {
         return Password;
     }
 
-    public void setPassword(Integer password) {
+    public void setPassword(String password) {
         Password = password;
+    }
+
+    public SimpleStringProperty AttributeProperty(){
+        return Name;
+    }
+    public String getAttribute() {
+        return AttributeProperty().get();
+    }
+
+    public void setAttribute(String attribute) {
+        AttributeProperty().set(attribute);
+    }
+
+    public User(){
+
+    }
+    public User(Integer aId, String aName, String aAttribute) {
+        setId(aId);
+        setName(aName);
+        setAttribute(aAttribute);
+
     }
 
     @Override
@@ -43,7 +71,7 @@ public class User {
         return "User{" +
                 "Id=" + Id +
                 ", Name='" + Name + '\'' +
-                ", Password=" + Password +
+                ", Password='" + Password + '\'' +
                 ", Attribute='" + Attribute + '\'' +
                 '}';
     }
